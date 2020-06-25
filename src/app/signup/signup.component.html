@@ -1,0 +1,45 @@
+<h1>Sign Up</h1>
+<div class="container">
+	<div>
+		<table>
+			<tr>
+				<td>First Name </td>
+				<td> </td>
+				<td><input type="text" name="firstname" [(ngModel)]="firstName" required/></td>
+			</tr>
+			<br>
+			<tr>
+				<td>Last Name </td>
+				<td> </td>
+				<td><input type="text" name="lastname" [(ngModel)]="lastName" required/></td>
+			</tr>
+			<br>
+			<tr>
+				<td>email</td>
+				<td> </td>
+				<td><input type="email" name="email" [(ngModel)]="email" required/></td>
+			</tr>
+			<br>
+			<tr>
+				<td>Mobile</td>
+				<td>   </td>
+				<td><input type="text" name="mobile" [(ngModel)]="mobile" required/></td>
+			</tr>
+			<br>
+			<tr>
+				<td>Password </td>
+				<td> </td>
+				<td><input type="password" name="Password" [(ngModel)]="passWord" required/></td>
+			</tr>
+			<br>
+			<tr>
+				<td>Confirm Password </td>
+				<td> </td>
+				<td><input type="password" name="confirmPassword" [(ngModel)]="re_passWord" required/></td>
+			</tr>
+
+		</table>
+		<br>
+		<button (click)=handleLogin() class="btn btn-success">Sign Up</button>
+	</div>
+</div>
