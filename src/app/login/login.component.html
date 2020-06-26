@@ -1,21 +1,22 @@
-<h1>Log In</h1>
 <div class="container">
-<div class="alert alert-warning" *ngIf="isInvalidUser">{{errorMessage}}</div>
-<div>
-<table>
-    <tr>
-        <td>User Name </td>
-        <td>   </td>
-        <td><input type="text" name="Username" [(ngModel)]="userName" /></td>
-    </tr>
-    <br>
-    <tr>
-        <td>Password </td>
-        <td> </td>
-        <td><input type="password" name="Password" [(ngModel)]="passWord"/></td>
-    </tr>
-</table>
-<br>
-<button (click)=handleLogin() class="btn btn-success">Login</button>
-</div> 
-</div> 
+    <div class="row">
+        <div class="col-xs-12 col-sm-10 col-md-8 col-sm-offset-1 col-md-offset-2">
+            <form (ngSubmit)="handleLogin(f)" #f="ngForm">
+                <div class="form-group">
+                    <span class="display-4">Log In</span>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" class="form-control" ngModel name="email" required email
+                        #email="ngModel">
+                    <span class="help-block" *ngIf="!email.valid && email.touched">Please enter a valid email!</span>
+                </div>
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <input type="password" id="password" class="form-control" ngModel name="password" required>
+                </div>
+                <button class="btn btn-primary" type="submit" [disabled]="!f.valid">Submit</button>
+            </form>
+        </div>
+    </div>
+</div>

@@ -8,14 +8,9 @@ import { NgForm } from '@angular/forms';
   styleUrls: ['./signup.component.css']
 })
 export class SignupComponent implements OnInit {
-  firstName: string = '';
-  lastName: string = '';
-  email: string = '';
-  mobile: string = '';
-  passWord: string = '';
-  re_passWord: string = '';
   ngOnInit(): void {
   }
-  handleLogin(){
+  handleSignup(form: NgForm){
+    console.log(form);
   }
 }

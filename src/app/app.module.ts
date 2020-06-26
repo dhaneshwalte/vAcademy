@@ -8,17 +8,22 @@ import { SignupComponent } from './signup/signup.component';
 import { AppRoutingModule } from './app-routing.module';
 import { FormsModule } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
+import { HomepageComponent } from './homepage/homepage.component';
+import { CoursesComponent } from './courses/courses.component';
+import { CourseComponent } from './courses/course/course.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     MenuComponent,
     LoginComponent,
-    SignupComponent
+    SignupComponent,
+    HomepageComponent,
+    CoursesComponent,
+    CourseComponent
   ],
   imports: [
     BrowserModule,
-    ReactiveFormsModule,
     AppRoutingModule,
     FormsModule
   ],
