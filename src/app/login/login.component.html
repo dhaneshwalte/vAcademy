@@ -4,6 +4,8 @@
             <form (ngSubmit)="handleLogin(f)" #f="ngForm">
                 <div class="form-group">
                     <span class="display-4">Log In</span>
+                    <p (click)="!isAdmin" style="cursor: pointer;">Student</p> 
+                    <p (click)="isAdmin=true" style="cursor: pointer;">Admin</p>
                 </div>
                 <div class="form-group">
                     <label for="email">Email</label>
@@ -15,7 +17,7 @@
                     <label for="password">Password</label>
                     <input type="password" id="password" class="form-control" ngModel name="password" required>
                 </div>
-                <button class="btn btn-primary" type="submit" [disabled]="!f.valid">Submit</button>
+                <button class="btn btn-primary" type="submit" [disabled]="!f.valid">Student Login</button>
             </form>
         </div>
     </div>
