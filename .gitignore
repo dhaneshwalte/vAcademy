@@ -44,3 +44,11 @@ testem.log
 # System Files
 .DS_Store
 Thumbs.db
+
+#APIs
+src/environments/API_KEYS.ts
+
+#Hosting
+firebase.json
+.firebaserc
+.firebase/

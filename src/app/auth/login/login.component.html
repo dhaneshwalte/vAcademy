@@ -1,11 +1,18 @@
 <div class="container">
     <div class="row">
         <div class="col-xs-12 col-sm-10 col-md-8 col-sm-offset-1 col-md-offset-2">
+           
+            <div *ngIf="isLoading" style="text-align: center;">
+                <app-loading-spinner></app-loading-spinner>
+            </div>
+    
             <form (ngSubmit)="handleLogin(f)" #f="ngForm">
                 <div class="form-group">
-                    <span class="display-4">Log In</span>
-                    <p (click)="!isAdmin" style="cursor: pointer;">Student</p> 
-                    <p (click)="isAdmin=true" style="cursor: pointer;">Admin</p>
+                    <span class="display-4">Log In as {{isAdmin ? 'Administrator' : 'Student'}}</span>
+                </div>
+                <div>
+                    <a (click)="isAdmin=false" style="cursor: pointer;">Student</a> | 
+                    <a (click)="isAdmin=true" style="cursor: pointer;">Admin</a>
                 </div>
                 <div class="form-group">
                     <label for="email">Email</label>
@@ -17,8 +24,13 @@
                     <label for="password">Password</label>
                     <input type="password" id="password" class="form-control" ngModel name="password" required>
                 </div>
-                <button class="btn btn-primary" type="submit" [disabled]="!f.valid">Student Login</button>
+                <button class="btn btn-primary" type="submit" [disabled]="!f.valid">{{isAdmin ? 'Administrator' : 'Student'}} Login</button>
             </form>
+            
+            <div class="alert alert-danger" style="margin-top: 10px;" *ngIf="error">
+                <p>{{ error }}</p>
+            </div>
+        
         </div>
     </div>
 </div>

@@ -1,6 +1,7 @@
-<div class="container">
+<div class="container" style="padding-bottom: 120px; padding-top: 20px;">
 	<div class="row">
 		<div class="col-xs-12 col-sm-10 col-md-8 col-sm-offset-1 col-md-offset-2">
+			
 			<form (ngSubmit)="handleSignup(f)" #f="ngForm">
 				<div class="form-group">
 					<span class="display-4">Sign Up</span>
@@ -32,7 +33,17 @@
 					<input type="password" id="repassword" class="form-control" ngModel name="repassword" required>
 				</div>
 				<button class="btn btn-primary" type="submit" [disabled]="!f.valid">Submit</button>
+			
 			</form>
+
+			<div *ngIf="isLoading" style="text-align: center; margin-top: 10px;">
+				<app-loading-spinner></app-loading-spinner>
+			</div>
+
+			<div class="alert alert-danger" *ngIf="error" style="margin-top: 10px;">
+				<p>{{ error }}</p>
+			</div>	
+
 		</div>
 	</div>
 </div>
