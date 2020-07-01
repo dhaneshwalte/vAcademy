@@ -169,7 +169,7 @@ export class AuthService {
   private handleError(errorRes: HttpErrorResponse) {
     //Default error message
     let errorMessage = 'An unknown error occured!';
-    console.log(errorRes);
+    console.log(errorRes.error.error.message);
     //If error message is not recieved due to connection issues
     //Return default error.
     if (!errorRes.error || !errorRes.error.error) {
@@ -190,8 +190,8 @@ export class AuthService {
         errorMessage = 'This password is not correct.';
         break;
 
-      case 'WEAK_PASSWORD': 
-        errorMessage = 'Password is weak';
+      case 'WEAK_PASSWORD : Password should be at least 6 characters': 
+        errorMessage = 'Password should be at least 6 characters';
         break;
     }
     return throwError(errorMessage);
