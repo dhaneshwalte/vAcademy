@@ -25,6 +25,8 @@ export class LoginComponent implements OnInit {
     this.isLoading = true;
     if (this.isAdmin) {
       console.log('Admin');
+      this.isLoading = false;
+      this.error = 'Admin Component is under construction!';
     } else {
       this.handleStudentLogin(form.value.email, form.value.password);
     }
