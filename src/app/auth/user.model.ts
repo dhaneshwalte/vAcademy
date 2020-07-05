@@ -1,15 +1,20 @@
 export class User {
 	constructor(
+		public id: number,
+		public firstName:string,
+		public lastName:string,
 		public email: string,
-		public id: string,
-		private _token: string,
-		private _tokenExpirationData: Date
-	) {}
+		public mobileNumber:string,
+		public password:string,
+		public admin:boolean
+		//private _token: string,
+		//private _tokenExpirationData: Date
+	) {} 
 
-	get token() {
-		if( !this._tokenExpirationData || new Date() > this._tokenExpirationData){
-			return null;
-		}
-		return this._token;
-	}
+	// get token() {
+	// 	if( !this._tokenExpirationData || new Date() > this._tokenExpirationData){
+	// 		return null;
+	// 	}
+	// 	return this._token;
+	// }
 }

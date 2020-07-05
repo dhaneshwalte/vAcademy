@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { AuthService } from '../auth/auth.service';
+import { AuthenticationService } from '../services/authentication.service';
+import { Router } from '@angular/router';
+import { UserDataService } from '../services/user-data.service';
 
 @Component({
   selector: 'app-header',
@@ -9,18 +12,22 @@ import { AuthService } from '../auth/auth.service';
 })
 export class HeaderComponent implements OnInit {
 
-  isLoggedIn = false;
+  isLoggedIn = true;
 
-  //Subscription to the user object.
+  //Subscription to the user object. 
   private userSub: Subscription;
 
-  constructor(private authService: AuthService) { }
+  constructor(private authService: AuthService,private authenticationServie:AuthenticationService,
+    private router:Router,private userInfo:UserDataService) { }
 
   ngOnInit(): void {
-    this.userSub = this.authService.user.subscribe(user => {
-      //If user is not null, set loggedIn to true
-      this.isLoggedIn = !!user;
-    });
+    
+    this.isLoggedIn=this.authenticationServie.isLoggedIn()
+    console.log('header',this.isLoggedIn)
+    // this.userSub = this.authService.user.subscribe(user => {
+    //   //If user is not null, set loggedIn to true
+    //   this.isLoggedIn = !!user;
+    // });
   }
 
   ngOnDestroy(){
@@ -28,6 +35,8 @@ export class HeaderComponent implements OnInit {
   }
 
   onLogOut(){
-    this.authService.logout();
+    this.authenticationServie.logout()
+    this.router.navigate(['/'])
+    //this.authService.logout();
   }
 }

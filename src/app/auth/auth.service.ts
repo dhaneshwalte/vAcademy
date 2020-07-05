@@ -4,7 +4,7 @@ import { catchError, tap } from 'rxjs/operators';
 import { throwError, BehaviorSubject } from 'rxjs';
 import { User } from './user.model';
 import { Router } from '@angular/router';
-import { API_KEYS } from 'src/environments/API_KEYS';
+
 
 
 //Expected Response from the Server
@@ -12,8 +12,8 @@ export interface AuthResponseData {
   kind: string;
   idToken: string;
   email: string;
-  refreshToken: string;
-  expiresIn: string;
+  refreshToken: string; //
+  expiresIn: string; //3600
   localId: string;
   registered?: boolean;
 }
@@ -32,115 +32,53 @@ export class AuthService {
 
   
   signup(email: string, password: string) {
-    return this.http
-      .post<AuthResponseData>(
-        'https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=' + API_KEYS.firebaseAPIKey,
-        {
-          email: email,
-          password: password,
-          returnSecureToken: true,
-        }
-      )
-      .pipe(
-        catchError(this.handleError),
-        tap((resData) => {
-          this.handleAuthentication(
-            resData.email,
-            resData.localId,
-            resData.idToken,
-            +resData.expiresIn
-          );
-        })
-      );
+    
+    console.log('signup')
+  //   return this.http
+  //     .post<AuthResponseData>(
+  //       'https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=' + API_KEYS.firebaseAPIKey,
+  //       {
+  //         email: email,
+  //         password: password,
+  //         returnSecureToken: true,
+  //       }
+  //     )
+  //     .pipe(
+  //       catchError(this.handleError),
+  //       tap((resData) => {
+  //         this.handleAuthentication(
+  //           resData.email,
+  //           resData.localId,
+  //           resData.idToken,
+  //           +resData.expiresIn
+  //         );
+  //       })
+  //     );
   }
   
   loginStudent(email: string, password: string) {
-    return this.http
-      .post<AuthResponseData>(
-        'https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=' + API_KEYS.firebaseAPIKey,
-        {
-          email: email,
-          password: password,
-          returnSecureToken: true,
-        }
-      )
-      .pipe(
-        catchError(this.handleError),
-        tap((resData) => {
-          this.handleAuthentication(
-            resData.email,
-            resData.localId,
-            resData.idToken,
-            +resData.expiresIn
-          );
-        })
-      );
+    console.log('login')
+    // return this.http
+    //   .post<AuthResponseData>(
+    //     'https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=' + API_KEYS.firebaseAPIKey,
+    //     {
+    //       email: email,
+    //       password: password,
+    //       returnSecureToken: true,
+    //     }
+    //   )
+    //   .pipe(
+    //     catchError(this.handleError),
+    //     tap((resData) => {
+    //       this.handleAuthentication(
+    //         resData.email,
+    //         resData.localId,
+    //         resData.idToken,
+    //         +resData.expiresIn
+    //       );
+    //     })
+    //   );
   }
-
-  autoLogin() {
-    //Retrieve User cookies;
-    const userData: {
-      email: string;
-      id: string;
-      _token: string;
-      _tokenExpirationData: string;
-    } = JSON.parse(localStorage.getItem('userData'));
-    if (!userData) {
-      //return if cookie is empty;
-      return;
-    }
-
-    //Convert JS object to User object
-    const loadedUser = new User(
-      userData.email,
-      userData.id,
-      userData._token,
-      new Date(userData._tokenExpirationData)
-    );
-
-    //If valid user object exists.
-    if (loadedUser.token) {
-
-      //Emit user object to all subscribers.
-      this.user.next(loadedUser);
-
-      //get remaining time of the current login session
-      const expirationDuration =
-        new Date(userData._tokenExpirationData).getTime() -
-        new Date().getTime();
-
-      //autologout after session expires
-      this.autoLogout(expirationDuration);
-    }
-  }
-  logout() {
-    //Invalidate user object
-    this.user.next(null);
-    //redirect to homepage
-    this.router.navigate(['/']);
-
-    //Clear All Data with
-    // ... localStorage.clear();
-
-    //Remove userData cookie
-    localStorage.removeItem('userData');
-
-    //Cleartimer of autologout
-    if (this.tokenExpirationTimer) {
-      clearTimeout(this.tokenExpirationTimer);
-    }
-
-    //Invalidate autologout timer
-    this.tokenExpirationTimer = null;
-  }
-
-  autoLogout(expirationDuration: number) {
-    //ExiprationDuration in milliseconds
-    this.tokenExpirationTimer = setTimeout(() => {
-      this.logout();
-    }, expirationDuration);
-  }
-
   private handleAuthentication(
     email: string,
     userId: string,
@@ -150,21 +88,86 @@ export class AuthService {
 
     //expiresIn is in seconds(to be recieved from the server)
     //convert it into milliseconds for autologout.
-    const expirationDate = new Date(new Date().getTime() + expiresIn * 1000);
+    // const expirationDate = new Date(new Date().getTime() + expiresIn * 1000);
     
-    //create new user object.
-    const user = new User(email, userId, token, expirationDate);
+    // //create new user object.
+    // const user = new User(email, userId, token, expirationDate);
     
-    //emit new loggedIn user.
-    this.user.next(user); 
-    //ExpiresIn is in seconds
+    // //emit new loggedIn user.
+    // this.user.next(user); 
+    // //ExpiresIn is in seconds
 
-    //start the autologout timer
-    this.autoLogout(expiresIn * 1000);
+    // //start the autologout timer
+    // this.autoLogout(expiresIn * 1000);
 
-    //store loggedIn user's data in cookies.
-    localStorage.setItem('userData', JSON.stringify(user));
+    // //store loggedIn user's data in cookies.
+    // localStorage.setItem('userData', JSON.stringify(user));
   }
+  autoLogin() {
+    //Retrieve User cookies;
+    // const userData: {
+    //   email: string;
+    //   id: string;
+    //   _token: string;
+    //   _tokenExpirationData: string;
+    // } = JSON.parse(localStorage.getItem('userData'));
+    // if (!userData) {
+    //   //return if cookie is empty;
+    //   return;
+    // }
+
+    //Convert JS object to User object
+    // const loadedUser = new User(
+    //   userData.email,
+    //   userData.id,
+    //   userData._token,
+    //   new Date(userData._tokenExpirationData)
+    // );
+
+    // //If valid user object exists.
+    // if (loadedUser.token) {
+
+    //   //Emit user object to all subscribers.
+    //   this.user.next(loadedUser);
+
+    //   //get remaining time of the current login session
+    //   const expirationDuration =
+    //     new Date(userData._tokenExpirationData).getTime() -
+    //     new Date().getTime();
+
+    //   //autologout after session expires
+    //   this.autoLogout(expirationDuration);
+    //}
+  }
+  logout() {
+    // //Invalidate user object
+    // this.user.next(null);
+    // //redirect to homepage
+    // this.router.navigate(['/']);
+
+    // //Clear All Data with
+    // // ... localStorage.clear();
+
+    // //Remove userData cookie
+    // localStorage.removeItem('userData');
+
+    // //Cleartimer of autologout
+    // if (this.tokenExpirationTimer) {
+    //   clearTimeout(this.tokenExpirationTimer);
+    // }
+
+    // //Invalidate autologout timer
+    // this.tokenExpirationTimer = null;
+  }
+
+  autoLogout(expirationDuration: number) {
+    //ExiprationDuration in milliseconds
+    this.tokenExpirationTimer = setTimeout(() => {
+      this.logout();
+    }, expirationDuration);
+  }
+
+ 
 
   private handleError(errorRes: HttpErrorResponse) {
     //Default error message

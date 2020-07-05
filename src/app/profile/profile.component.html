@@ -1,12 +1,13 @@
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <h1>Profile</h1>
 <div class="profile">
 	<div id="profileimage">
 		<img src="assets\profilepicture\photo.png" alt="Name" class="profileim">
 
-		<span class="name">Dhanesh Walte</span>
+		<span class="name">{{userData.firstName}}</span>
 
 
-	</div>
+	</div> 
 
 
 	<div id="edit">
@@ -14,25 +15,25 @@
 			<tr>
 				<td>First Name </td>
 				<td> : </td>
-				<td> Dhanesh</td>
+				<td>{{userData.firstName}}</td>
 			</tr>
 			<br>
 			<tr>
 				<td>Last Name </td>
 				<td> : </td>
-				<td>Walte</td>
+				<td>{{userData.lastName}}</td>
 			</tr>
 			<br>
 			<tr>
 				<td>Email </td>
 				<td> : </td>
-				<td>dhanu@gmail.com</td>
+				<td>{{userData.email}}</td>
 			</tr>
 			<br>
 			<tr>
 				<td>Mobile </td>
 				<td> : </td>
-				<td>987654321</td>
+				<td>{{userData.mobileNumber}}</td>
 			</tr>
 			<br>
 
