@@ -14,27 +14,18 @@ export class AuthInterceptorService implements HttpInterceptor {
 
   intercept(req: HttpRequest<any>, next: HttpHandler) {
 
-    return next.handle(req);
-    
-    // return this.authService.user.pipe(
-    //   //Unsubscribe from user after taking 1 value
-    //   take(1),
-    //   //attach inner observable to the outer one.
-    //   exhaustMap((user) => {
-    //     if (!user) {
-    //       //if user does not exist, return default request
-    //       return next.handle(req);
-    //     }
+    let userName = "v-user"
+    let password = "v-password"
+    //encoding
+    let basicHttpheader = "Basic " + window.btoa(userName + ':' + password)
+    req = req.clone( 
+      {
+        setHeaders: {
+          Authorization: basicHttpheader
+        }
+      })
 
-    //     //Attach User token to all outgoing requests.
-    //     const modifiedReq = req.clone({
-    //       params: new HttpParams().set('auth', user.token),
-    //     });
-
-    //     //Send modified request.
-    //     return next.handle(modifiedReq);
-    //   })
-    // );
+      return next.handle(req)
   
   }
 

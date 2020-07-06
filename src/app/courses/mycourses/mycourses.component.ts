@@ -9,6 +9,7 @@ import { CoursesService } from 'src/app/services/courses.service';
 })
 export class MycoursesComponent implements OnInit {
 
+  //Create API
   enrolledCourses: Course[] = []
 
   constructor(private coursesService: CoursesService) { }

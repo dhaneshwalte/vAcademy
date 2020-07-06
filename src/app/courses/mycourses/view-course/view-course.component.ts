@@ -17,6 +17,8 @@ export class ViewCourseComponent implements OnInit {
   ngOnInit(): void {
     this.index = +this.route.snapshot.params['id'];
     this.course = this.coursesService.getEnrolledCourse(this.index);
+
+    //this.coursesService.fetchEnrolledCourses();
   }
 
 }

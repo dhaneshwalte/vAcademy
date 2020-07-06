@@ -7,9 +7,16 @@ import { User } from '../auth/user.model';
 })
 export class AuthenticationService {
 
+  isAdmin = false;
+
   constructor(private http: HttpClient) { }
 
   //Basic check for password
+
+  setAdmin(){
+    this.isAdmin = true;
+  }
+
   checkPassword()
   {
 
@@ -40,8 +47,9 @@ export class AuthenticationService {
     //   Authorization: basicheaderString
     // })
     let auth_Header = this.createHttpHeader()
-    return this.http.get<User>(`http://localhost:8080/users/login/${email}/${password}/${isAdmin}`,
-    {headers:auth_Header})
+    //return this.http.get<User>(`http://localhost:8080/users/login/${email}/${password}/${isAdmin}`,
+    //{headers:auth_Header})
+    return this.http.get<User>(`http://localhost:8080/users/login/${email}/${password}/${isAdmin}`)
   }
  
   //For Spring security we need HTTP header 
@@ -60,13 +68,13 @@ export class AuthenticationService {
 
   signupUser(userInfo:User)
   {
-    let auth_Header = this.createHttpHeader()
+    let auth_Header = this.createHttpHeader() 
 
-    return this.http.post(`http://localhost:8080/users/all`,userInfo,{headers:auth_Header})
-
+    //return this.http.post(`http://localhost:8080/users/all`,userInfo,{headers:auth_Header})
+    return this.http.post(`http://localhost:8080/users/all`,userInfo)
   }
 
-  //logout
+  //logout 
   logout()
   {
     localStorage.removeItem('userData');

@@ -5,7 +5,7 @@ import { AppComponent } from './app.component';
 import { LoginComponent } from './auth/login/login.component';
 import { SignupComponent } from './auth/signup/signup.component';
 import { AppRoutingModule } from './app-routing.module';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HomepageComponent } from './homepage/homepage.component';
 import { CoursesComponent } from './courses/all-courses/courses.component';
 import { CourseComponent } from './courses/course/course.component';
@@ -18,6 +18,7 @@ import { HeaderComponent } from './header/header.component';
 import { CourseDetailComponent } from './courses/course-detail/course-detail.component';
 import { CoursePayComponent } from './courses/course-detail/course-pay/course-pay.component';
 import { ViewCourseComponent } from './courses/mycourses/view-course/view-course.component';
+import { AddCourseComponent } from './courses/add-course/add-course.component';
 
 @NgModule({
   declarations: [
@@ -33,9 +34,11 @@ import { ViewCourseComponent } from './courses/mycourses/view-course/view-course
     HeaderComponent,
     CourseDetailComponent,
     CoursePayComponent,
-    ViewCourseComponent
+    ViewCourseComponent,
+    AddCourseComponent
   ],
   imports: [
+    ReactiveFormsModule,
     BrowserModule,
     AppRoutingModule,
     FormsModule,

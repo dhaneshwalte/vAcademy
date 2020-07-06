@@ -42,7 +42,10 @@ export class LoginComponent implements OnInit {
     {
       console.log('Admin');
       this.isLoading = false;
-      this.error = 'Admin Component is under construction!';
+      //this.error = 'Admin Component is under construction!';
+      this.authenticationService.logout();
+      this.authenticationService.setAdmin();
+      this.router.navigate(['/courses'])
     } 
     else 
     {

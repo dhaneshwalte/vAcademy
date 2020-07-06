@@ -14,7 +14,6 @@ export class AppComponent implements OnInit{
               private authenticationService: AuthenticationService) {}
 
   ngOnInit(){
-    this.coursesService.fetchCourses();
     if(this.authenticationService.isLoggedIn()){
       this.coursesService.fetchEnrolledCourses();
     }

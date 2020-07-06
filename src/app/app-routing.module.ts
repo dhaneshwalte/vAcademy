@@ -10,15 +10,17 @@ import { AuthGuard } from './auth/auth.guard';
 import { CourseDetailComponent } from './courses/course-detail/course-detail.component';
 import { CoursePayComponent } from './courses/course-detail/course-pay/course-pay.component';
 import { ViewCourseComponent } from './courses/mycourses/view-course/view-course.component';
+import { AddCourseComponent } from './courses/add-course/add-course.component';
 
 const appRoutes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
   {
-    path: 'courses',
-	canActivateChild: [AuthGuard],
-    children: [
-      { path: '', component: CoursesComponent },
-	  { path: 'my', component: MycoursesComponent },
+	  path: 'courses',
+	  canActivateChild: [AuthGuard],
+	  children: [
+		  { path: '', component: CoursesComponent },
+		  { path: 'my', component: MycoursesComponent },
+		  {path: 'add-course', component: AddCourseComponent},
 	  {
 		path: 'my/:id',
 		component: ViewCourseComponent,

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Course } from 'src/app/shared/course.model';
 import { CoursesService } from 'src/app/services/courses.service';
+import { AuthenticationService } from 'src/app/services/authentication.service';
 
 @Component({
   selector: 'app-courses',
@@ -9,11 +10,23 @@ import { CoursesService } from 'src/app/services/courses.service';
 })
 export class CoursesComponent implements OnInit {
 
-  availableCourses: Course[]
-  constructor(private coursesService: CoursesService) { }
+  isAdmin: boolean;
+  availableCourses
+  constructor(private coursesService: CoursesService,
+              private authenticationService: AuthenticationService) { }
 
   ngOnInit(): void {
-    this.availableCourses = this.coursesService.getAvailableCourses();
+
+    this.coursesService.fetchCourses().subscribe(
+
+      response=>{
+        this.availableCourses=response
+        this.coursesService.setAvailableCourses(this.availableCourses);
+        //console.log("AllCourses: ",response)
+      },
+      error=>{}
+    );
+    this.isAdmin = this.authenticationService.isAdmin;
   }
   
 }

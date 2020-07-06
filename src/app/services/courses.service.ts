@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpClientModule } from '@angular/common/http';
 import { User } from '../auth/user.model';
 import { Course } from '../shared/course.model';
 
@@ -10,34 +10,18 @@ export class CoursesService {
 
 	availableCourses: Course[];
 	enrolledCourses: Course[];
-	constructor() { }
+	constructor(private http: HttpClient) { }
 
 	fetchCourses(){
-
-		this.availableCourses = [
-			{
-				name: "OS",
-				duration: "3",
-				imageUrl: "https://code.org/shared/images/social-media/codeorg2019_social.png",
-				price: 700
-			  },
-			  {
-				name: "DBMS",
-				duration: "3",
-				imageUrl: "https://code.org/shared/images/social-media/codeorg2019_social.png",
-				price: 700
-			  },
-			  {
-				name: "CN",
-				duration: "3",
-				imageUrl: "https://code.org/shared/images/social-media/codeorg2019_social.png",
-				price: 700
-			  }
-		]
+		return this.http.get<Course>(`http://localhost:8080/courses/allcourses`);
 	}
 
 	getAvailableCourses(){
 		return this.availableCourses;
+	}
+
+	setAvailableCourses(availableCourses){
+		this.availableCourses = availableCourses;
 	}
 
 	fetchEnrolledCourses(){
@@ -67,6 +51,12 @@ export class CoursesService {
 
 	getEnrolledCourse(index: number){
 		return this.enrolledCourses[index];
+	}
+
+	addAvailableCourse(course: Course){
+		this.availableCourses.push(course);
+		//Create API
+		//Server Push 
 	}
 
 }
