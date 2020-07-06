@@ -9,6 +9,7 @@ import { MycoursesComponent } from './courses/mycourses/mycourses.component';
 import { AuthGuard } from './auth/auth.guard';
 import { CourseDetailComponent } from './courses/course-detail/course-detail.component';
 import { CoursePayComponent } from './courses/course-detail/course-pay/course-pay.component';
+import { ViewCourseComponent } from './courses/mycourses/view-course/view-course.component';
 
 const appRoutes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
@@ -20,7 +21,7 @@ const appRoutes: Routes = [
 	  { path: 'my', component: MycoursesComponent },
 	  {
 		path: 'my/:id',
-		component: CoursesComponent,
+		component: ViewCourseComponent,
 	  },
       {
         path: ':id',
@@ -36,11 +37,6 @@ const appRoutes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'signup', component: SignupComponent },
   { path: 'profile', component: ProfileComponent },
-  {
-    path: 'mycourses',
-    component: MycoursesComponent,
-    canActivate: [AuthGuard],
-  },
   // {path: '', redirectTo: '/recipes', pathMatch: 'full' },
   // {path: 'recipes', component: RecipesComponent, children:[
   // 	{path: '', component: RecipeStartComponent},

@@ -17,6 +17,7 @@ import { LoadingSpinnerComponent } from './shared/loading-spinner/loading-spinne
 import { HeaderComponent } from './header/header.component';
 import { CourseDetailComponent } from './courses/course-detail/course-detail.component';
 import { CoursePayComponent } from './courses/course-detail/course-pay/course-pay.component';
+import { ViewCourseComponent } from './courses/mycourses/view-course/view-course.component';
 
 @NgModule({
   declarations: [
@@ -31,7 +32,8 @@ import { CoursePayComponent } from './courses/course-detail/course-pay/course-pa
     LoadingSpinnerComponent,
     HeaderComponent,
     CourseDetailComponent,
-    CoursePayComponent
+    CoursePayComponent,
+    ViewCourseComponent
   ],
   imports: [
     BrowserModule,

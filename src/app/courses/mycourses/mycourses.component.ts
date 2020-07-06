@@ -14,6 +14,7 @@ export class MycoursesComponent implements OnInit {
   constructor(private coursesService: CoursesService) { }
 
   ngOnInit(): void {
+    //console.log("My Courses")
     this.enrolledCourses = this.coursesService.getEnrolledCourses();
   }
 
