@@ -15,6 +15,7 @@ import { AuthInterceptorService } from './auth/auth-interceptor.service';
 import { MycoursesComponent } from './courses/mycourses/mycourses.component';
 import { LoadingSpinnerComponent } from './shared/loading-spinner/loading-spinner.component';
 import { HeaderComponent } from './header/header.component';
+import { CourseDetailComponent } from './courses/course-detail/course-detail.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,8 @@ import { HeaderComponent } from './header/header.component';
     ProfileComponent,
     MycoursesComponent,
     LoadingSpinnerComponent,
-    HeaderComponent
+    HeaderComponent,
+    CourseDetailComponent
   ],
   imports: [
     BrowserModule,

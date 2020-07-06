@@ -9,9 +9,14 @@ import { Course } from 'src/app/shared/course.model';
 export class CourseComponent implements OnInit {
 
   @Input() course: Course;
+  @Input() index: number;
   constructor() { }
 
   ngOnInit(): void {
+  }
+
+  openCourse(){
+    console.log(this.index);
   }
 
 }

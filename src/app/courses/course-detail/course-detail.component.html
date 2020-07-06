@@ -1,9 +1,10 @@
 <div>
-	<a class="list-group-item clearfix" style="cursor: pointer;" [routerLink]="[index]">
+	<a class="list-group-item clearfix" style="cursor: pointer;">
 		<div class="pull-left">
 			<img src={{course.imageUrl}} alt="Title" class="img-responsive" style="max-height: 150px;">
 			<h4>{{course.name}}</h4>
 			<p class="list-group-item-text"> {{course.duration}} hrs</p>
 		</div>
 	</a>
+	<button class="btn btn-primary" (click)=enrollCourse()> Enroll </button>
 </div>

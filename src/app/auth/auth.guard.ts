@@ -4,6 +4,7 @@ import {
   RouterStateSnapshot,
   Router,
   UrlTree,
+  CanActivateChild,
 } from '@angular/router';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
@@ -12,17 +13,20 @@ import { map, take } from 'rxjs/operators';
 import { AuthenticationService } from '../services/authentication.service';
 
 @Injectable({ providedIn: 'root' })
-export class AuthGuard implements CanActivate {
+export class AuthGuard implements CanActivateChild {
 
   constructor(private authenticationService: AuthenticationService, private router: Router) {}
   
-  canActivate(
+  canActivateChild(
     route: ActivatedRouteSnapshot,
     router: RouterStateSnapshot
   ): boolean | Promise<boolean | UrlTree> | Observable<boolean | UrlTree> {
     
-    //get user object
-    return this.authenticationService.isLoggedIn();
+    if(!route.routeConfig.path.startsWith("my") || this.authenticationService.isLoggedIn()){
+      return true;
+    }
+    this.router.navigate(['/login']);
+    return false;
     // return this.authService.user.pipe(
     //   //get user object once and unsubscribe
     //   take(1),

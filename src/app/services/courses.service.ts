@@ -34,7 +34,7 @@ export class CoursesService {
 	}
 
 	getAvailableCourses(){
-		return this.availableCourses.slice();
+		return this.availableCourses;
 	}
 
 	fetchEnrolledCourses(){
@@ -52,8 +52,16 @@ export class CoursesService {
 		]
 	}
 
+	getAvailableCourse(index: number){
+		return this.availableCourses[index];
+	}
+
 	getEnrolledCourses(){
-		return this.enrolledCourses.slice();
+		return this.enrolledCourses;
+	}
+
+	getEnrolledCourse(index: number){
+		return this.enrolledCourses[index];
 	}
 
 }
