@@ -5,6 +5,7 @@ import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { AuthenticationService } from 'src/app/services/authentication.service';
 import { User } from '../user.model';
+import { CoursesService } from 'src/app/services/courses.service';
 //import { format } from 'path';
 
 @Component({
@@ -22,7 +23,7 @@ export class LoginComponent implements OnInit {
   //Observable to emit userlogin
   authObs: Observable<AuthResponseData>;
 
-  constructor(private authService: AuthService, private router: Router
+  constructor(private coursesService: CoursesService, private router: Router
     ,private authenticationService:AuthenticationService) {}
 
   ngOnInit(): void 
@@ -58,6 +59,7 @@ export class LoginComponent implements OnInit {
         this.isLoading=false
         this.isAlreadySignedUp=true //Flag for signed up user: used in html part
         this.userData=response
+        this.coursesService.fetchEnrolledCourses();
         //Save data in localstorage for further use
         localStorage.setItem('userData',JSON.stringify(this.userData)) 
         this.router.navigate(['/courses']);

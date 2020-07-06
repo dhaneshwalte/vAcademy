@@ -3,18 +3,17 @@ import { Course } from 'src/app/shared/course.model';
 import { CoursesService } from 'src/app/services/courses.service';
 
 @Component({
-  selector: 'app-mycourses',
-  templateUrl: './mycourses.component.html',
-  styleUrls: ['./mycourses.component.css']
+  selector: 'app-courses',
+  templateUrl: './courses.component.html',
+  styleUrls: ['./courses.component.css']
 })
-export class MycoursesComponent implements OnInit {
+export class CoursesComponent implements OnInit {
 
-  enrolledCourses: Course[] = []
-
+  availableCourses: Course[]
   constructor(private coursesService: CoursesService) { }
 
   ngOnInit(): void {
-    this.enrolledCourses = this.coursesService.getEnrolledCourses();
+    this.availableCourses = this.coursesService.getAvailableCourses();
   }
-
+  
 }

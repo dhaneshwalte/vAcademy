@@ -7,7 +7,7 @@ import { SignupComponent } from './auth/signup/signup.component';
 import { AppRoutingModule } from './app-routing.module';
 import { FormsModule } from '@angular/forms';
 import { HomepageComponent } from './homepage/homepage.component';
-import { CoursesComponent } from './courses/courses.component';
+import { CoursesComponent } from './courses/all-courses/courses.component';
 import { CourseComponent } from './courses/course/course.component';
 import { ProfileComponent } from './profile/profile.component';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';

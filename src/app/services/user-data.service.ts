@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { User } from '../auth/user.model';
 
 @Injectable({
   providedIn: 'root'
@@ -13,7 +14,7 @@ export class UserDataService {
 
   }
 
-  getFirstName()
+  getFirstName(): string
   {
     this.userData=JSON.parse(localStorage.getItem('userData'))
     

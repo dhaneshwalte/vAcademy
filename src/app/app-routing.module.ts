@@ -4,7 +4,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { LoginComponent } from './auth/login/login.component';
 import { SignupComponent } from './auth/signup/signup.component';
 import { HomepageComponent } from './homepage/homepage.component';
-import { CoursesComponent } from './courses/courses.component';
+import { CoursesComponent } from './courses/all-courses/courses.component';
 import { MycoursesComponent } from './courses/mycourses/mycourses.component';
 import { AuthGuard } from './auth/auth.guard';
 

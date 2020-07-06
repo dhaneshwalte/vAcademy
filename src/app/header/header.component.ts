@@ -14,11 +14,8 @@ export class HeaderComponent implements OnInit {
 
   isLoggedIn = true;
 
-  //Subscription to the user object. 
-  private userSub: Subscription;
-
-  constructor(private authService: AuthService,private authenticationServie:AuthenticationService,
-    private router:Router,private userInfo:UserDataService) { }
+  constructor(public authenticationServie:AuthenticationService,
+    private router:Router,public userInfo:UserDataService) { }
 
   ngOnInit(): void {
     
@@ -28,10 +25,6 @@ export class HeaderComponent implements OnInit {
     //   //If user is not null, set loggedIn to true
     //   this.isLoggedIn = !!user;
     // });
-  }
-
-  ngOnDestroy(){
-    this.userSub.unsubscribe();
   }
 
   onLogOut(){
