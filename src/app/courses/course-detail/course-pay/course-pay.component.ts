@@ -37,11 +37,15 @@ export class CoursePayComponent implements OnInit {
           });
         },
         onApprove: async (data, actions) => {
+
+          //Payment Approved
+          //Create API Call
           const order = await actions.order.capture();
           this.paidFor = true;
           console.log(order);
         },
         onError: err => {
+          
           console.log(err);
         }
       })

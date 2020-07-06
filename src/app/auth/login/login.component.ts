@@ -62,6 +62,7 @@ export class LoginComponent implements OnInit {
         this.isLoading=false
         this.isAlreadySignedUp=true //Flag for signed up user: used in html part
         this.userData=response
+        //Fetch Enrolled Courses
         this.coursesService.fetchEnrolledCourses();
         //Save data in localstorage for further use
         localStorage.setItem('userData',JSON.stringify(this.userData)) 

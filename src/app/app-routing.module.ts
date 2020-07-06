@@ -15,24 +15,24 @@ import { AddCourseComponent } from './courses/add-course/add-course.component';
 const appRoutes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
   {
-	  path: 'courses',
-	  canActivateChild: [AuthGuard],
-	  children: [
-		  { path: '', component: CoursesComponent },
-		  { path: 'my', component: MycoursesComponent },
-		  {path: 'add-course', component: AddCourseComponent},
-	  {
-		path: 'my/:id',
-		component: ViewCourseComponent,
-	  },
+    path: 'courses',
+    canActivateChild: [AuthGuard],
+    children: [
+      { path: '', component: CoursesComponent },
+      { path: 'my', component: MycoursesComponent },
+      { path: 'add-course', component: AddCourseComponent },
+      {
+        path: 'my/:id',
+        component: ViewCourseComponent,
+      },
       {
         path: ':id',
         component: CourseDetailComponent,
-	  },
-	  {
+      },
+      {
         path: ':id/pay/:id',
         component: CoursePayComponent,
-      }
+      },
     ],
   },
   { path: 'home', component: HomepageComponent },
