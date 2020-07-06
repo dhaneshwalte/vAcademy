@@ -8,6 +8,7 @@ import { CoursesComponent } from './courses/all-courses/courses.component';
 import { MycoursesComponent } from './courses/mycourses/mycourses.component';
 import { AuthGuard } from './auth/auth.guard';
 import { CourseDetailComponent } from './courses/course-detail/course-detail.component';
+import { CoursePayComponent } from './courses/course-detail/course-pay/course-pay.component';
 
 const appRoutes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
@@ -24,6 +25,10 @@ const appRoutes: Routes = [
       {
         path: ':id',
         component: CourseDetailComponent,
+	  },
+	  {
+        path: ':id/pay/:id',
+        component: CoursePayComponent,
       }
     ],
   },

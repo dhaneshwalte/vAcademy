@@ -16,13 +16,6 @@ export class CourseDetailComponent implements OnInit {
               private coursesService: CoursesService) { }
 
   ngOnInit(): void {
-    // this.route.params
-    // .subscribe(
-    //   (params: Params) => {
-    //     this.index = +params['id'];
-    //     this.course = this.coursesService.getAvailableCourse(this.index);
-    //   }
-    // );
     this.index = +this.route.snapshot.params['id'];
     this.course = this.coursesService.getAvailableCourse(this.index);
   }

@@ -18,17 +18,20 @@ export class CoursesService {
 			{
 				name: "OS",
 				duration: "3",
-				imageUrl: "https://code.org/shared/images/social-media/codeorg2019_social.png"
+				imageUrl: "https://code.org/shared/images/social-media/codeorg2019_social.png",
+				price: 700
 			  },
 			  {
 				name: "DBMS",
 				duration: "3",
-				imageUrl: "https://code.org/shared/images/social-media/codeorg2019_social.png"
+				imageUrl: "https://code.org/shared/images/social-media/codeorg2019_social.png",
+				price: 700
 			  },
 			  {
 				name: "CN",
 				duration: "3",
-				imageUrl: "https://code.org/shared/images/social-media/codeorg2019_social.png"
+				imageUrl: "https://code.org/shared/images/social-media/codeorg2019_social.png",
+				price: 700
 			  }
 		]
 	}
@@ -42,12 +45,14 @@ export class CoursesService {
 			{
 				name: "OS",
 				duration: "3",
-				imageUrl: "https://code.org/shared/images/social-media/codeorg2019_social.png"
+				imageUrl: "https://code.org/shared/images/social-media/codeorg2019_social.png",
+				price: 700
 			  },
 			  {
 				name: "DBMS",
 				duration: "3",
-				imageUrl: "https://code.org/shared/images/social-media/codeorg2019_social.png"
+				imageUrl: "https://code.org/shared/images/social-media/codeorg2019_social.png",
+				price: 700
 			  }
 		]
 	}
