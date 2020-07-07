@@ -19,6 +19,8 @@ import { CourseDetailComponent } from './courses/course-detail/course-detail.com
 import { CoursePayComponent } from './courses/course-detail/course-pay/course-pay.component';
 import { ViewCourseComponent } from './courses/mycourses/view-course/view-course.component';
 import { AddCourseComponent } from './courses/add-course/add-course.component';
+import { RanklistComponent } from './ranklist/ranklist.component';
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 
 @NgModule({
   declarations: [
@@ -35,7 +37,9 @@ import { AddCourseComponent } from './courses/add-course/add-course.component';
     CourseDetailComponent,
     CoursePayComponent,
     ViewCourseComponent,
-    AddCourseComponent
+    AddCourseComponent,
+    RanklistComponent,
+    PageNotFoundComponent
   ],
   imports: [
     ReactiveFormsModule,

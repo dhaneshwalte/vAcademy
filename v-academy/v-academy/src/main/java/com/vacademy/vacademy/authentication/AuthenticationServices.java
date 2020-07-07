@@ -19,8 +19,6 @@ public class AuthenticationServices {
 		allUsers=new ArrayList<Users>();
 		enrolledCourses=new ArrayList<Courses>();
 		String imageUrl="https://code.org/shared/images/social-media/codeorg2019_social.png";
-		Courses dummyCourse=new Courses("Math","5",imageUrl,100L);
-		enrolledCourses.add(dummyCourse);
 		allUsers.add(new Users(++id,"Dhanesh","Walte","d@g.com","12345","12345",false,enrolledCourses));
 		allUsers.add(new Users(++id,"Mohit","Gupta","m@g.com","12345","12345",false,enrolledCourses));
 		allUsers.add(new Users(++id,"Rohan","Kurekar","r@g.com","12345","12345",false,enrolledCourses));

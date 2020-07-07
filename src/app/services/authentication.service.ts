@@ -81,4 +81,8 @@ export class AuthenticationService {
 
   }
 
+  getAllUsers(){
+    return this.http.get<User>(`http://localhost:8080/users/getall`)
+  }
+
 }

@@ -10,13 +10,17 @@ import { CoursesService } from 'src/app/services/courses.service';
 })
 export class ViewCourseComponent implements OnInit {
   index: number;
+  userData
+  enrolledCourses
   course: Course;
   constructor(private route: ActivatedRoute,
               private coursesService: CoursesService) { }
 
   ngOnInit(): void {
     this.index = +this.route.snapshot.params['id'];
-    this.course = this.coursesService.getEnrolledCourse(this.index);
+    this.userData=JSON.parse(localStorage.getItem('userData'))
+    this.enrolledCourses=this.userData.enrolledCourses;
+    this.course = this.enrolledCourses[this.index];
 
     //this.coursesService.fetchEnrolledCourses();
   }

@@ -11,7 +11,7 @@ import { User } from 'src/app/auth/user.model';
 export class MycoursesComponent implements OnInit {
 
   //Create API
-  enrolledCourses
+  enrolledCourses: Course[]
   userData:User
   constructor(private coursesService: CoursesService) { }
 

@@ -11,6 +11,8 @@ import { CourseDetailComponent } from './courses/course-detail/course-detail.com
 import { CoursePayComponent } from './courses/course-detail/course-pay/course-pay.component';
 import { ViewCourseComponent } from './courses/mycourses/view-course/view-course.component';
 import { AddCourseComponent } from './courses/add-course/add-course.component';
+import { RanklistComponent } from './ranklist/ranklist.component';
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 
 const appRoutes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
@@ -35,10 +37,12 @@ const appRoutes: Routes = [
       },
     ],
   },
+  { path: 'ranklist', component: RanklistComponent },
   { path: 'home', component: HomepageComponent },
   { path: 'login', component: LoginComponent },
   { path: 'signup', component: SignupComponent },
   { path: 'profile', component: ProfileComponent },
+  { path: '**', component: PageNotFoundComponent },
   // {path: '', redirectTo: '/recipes', pathMatch: 'full' },
   // {path: 'recipes', component: RecipesComponent, children:[
   // 	{path: '', component: RecipeStartComponent},

@@ -5,3 +5,9 @@
 	[index] = i 
 	[course] = course>
 ></app-course>
+
+<div *ngIf="enrolledCourses.length == 0">
+
+	<h2 > Enroll In Some Courses and let the fun begin! 
+	<a style="cursor: pointer;" routerLink="/courses"> Here</a></h2>
+</div>
