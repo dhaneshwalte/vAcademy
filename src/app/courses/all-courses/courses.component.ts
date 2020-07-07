@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Course } from 'src/app/shared/course.model';
 import { CoursesService } from 'src/app/services/courses.service';
 import { AuthenticationService } from 'src/app/services/authentication.service';
+import { User } from 'src/app/auth/user.model';
 
 @Component({
   selector: 'app-courses',
@@ -16,7 +17,6 @@ export class CoursesComponent implements OnInit {
               private authenticationService: AuthenticationService) { }
 
   ngOnInit(): void {
-
     this.coursesService.fetchCourses().subscribe(
 
       response=>{

@@ -6,5 +6,7 @@
 			<p class="list-group-item-text"> {{course.duration}} hrs</p>
 		</div>
 	</a>
-	<button class="btn btn-primary" routerLink="pay/{{index}}"> Enroll </button>
+	<div *ngIf="!isEnrolled">
+		<button class="btn btn-primary" routerLink="pay/{{index}}"> Enroll </button>
+	</div>
 </div>
