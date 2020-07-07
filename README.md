@@ -27,4 +27,5 @@ Front End environment : FrontEnd/package.json
 	<li>Jquery</li>
 	<li>Bootstrap 4.5</li>
 	<li>Popper.js</li>
+	<li>Angular Dev-kit</li>
 </ul>
