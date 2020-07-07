@@ -14,7 +14,7 @@ export class CourseComponent implements OnInit {
 
   ngOnInit(): void {
   }
-
+ 
   openCourse(){
     console.log(this.index);
   }

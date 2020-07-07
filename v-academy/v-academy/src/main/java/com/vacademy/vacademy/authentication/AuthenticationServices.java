@@ -2,21 +2,28 @@ package com.vacademy.vacademy.authentication;
 import java.util.*;
 import org.springframework.stereotype.Service;
 
+import com.vacademy.vacademy.dbModels.Courses;
+
 //Contains all the reuired services for login/signup
 @Service
 public class AuthenticationServices {
 	
 	private static List<Users>allUsers;
+	private static List<Courses>enrolledCourses;
 	private static Long id=0L;
 	
 	public AuthenticationServices() {}
 	
 	static
-	{
+	{ 
 		allUsers=new ArrayList<Users>();
-		allUsers.add(new Users(++id,"Dhanesh","Walte","d@g.com","12345","12345",false));
-		allUsers.add(new Users(++id,"Mohit","Gupta","m@g.com","12345","12345",false));
-		allUsers.add(new Users(++id,"Rohan","Kurekar","r@g.com","12345","12345",false));
+		enrolledCourses=new ArrayList<Courses>();
+		String imageUrl="https://code.org/shared/images/social-media/codeorg2019_social.png";
+		Courses dummyCourse=new Courses("Math","5",imageUrl,100L);
+		enrolledCourses.add(dummyCourse);
+		allUsers.add(new Users(++id,"Dhanesh","Walte","d@g.com","12345","12345",false,enrolledCourses));
+		allUsers.add(new Users(++id,"Mohit","Gupta","m@g.com","12345","12345",false,enrolledCourses));
+		allUsers.add(new Users(++id,"Rohan","Kurekar","r@g.com","12345","12345",false,enrolledCourses));
 	}
 	
 	public static List<Users> getAllUsers() {
@@ -86,6 +93,20 @@ public class AuthenticationServices {
 			
 		}
 		return null;
+	}
+	
+	public  List<Courses> enroll(Long id,Courses course)
+	{
+		//System.out.println("IN ENROLL SERVICE "+id+" ");
+		
+		Users user=findUserById(id);
+		//System.out.println("IN ENROLL SERVICE "+user);
+		List<Courses>enrolledCourses=user.getEnrolledCourses();
+		enrolledCourses.add(course);
+		user.setEnrolledCourses(enrolledCourses); 
+		//System.out.println(enrolledCourses);
+		return user.getEnrolledCourses();
+		
 	}
 
 }

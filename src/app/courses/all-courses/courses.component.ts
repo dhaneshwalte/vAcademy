@@ -10,7 +10,7 @@ import { AuthenticationService } from 'src/app/services/authentication.service';
 })
 export class CoursesComponent implements OnInit {
 
-  isAdmin: boolean;
+  isAdmin: boolean; 
   availableCourses
   constructor(private coursesService: CoursesService,
               private authenticationService: AuthenticationService) { }

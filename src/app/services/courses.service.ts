@@ -12,19 +12,23 @@ export class CoursesService {
 	enrolledCourses: Course[];
 	constructor(private http: HttpClient) { }
 
-	fetchCourses(){
+	fetchCourses()
+	{
 		return this.http.get<Course>(`http://localhost:8080/courses/allcourses`);
 	}
 
-	getAvailableCourses(){
+	getAvailableCourses()
+	{
 		return this.availableCourses;
 	}
 
-	setAvailableCourses(availableCourses){
+	setAvailableCourses(availableCourses)
+	{
 		this.availableCourses = availableCourses;
 	}
 
 	fetchEnrolledCourses(){
+		//return this.http.get<Course>(`http://localhost:8080/courses/allcourses`);
 		this.enrolledCourses = [
 			{
 				name: "OS",
@@ -57,6 +61,12 @@ export class CoursesService {
 		this.availableCourses.push(course);
 		//Create API
 		//Server Push 
+	}
+
+	//Saving the enrolled course to db
+	EnrolleToTheCourse(userId,course:Course)
+	{
+		return this.http.put(`http://localhost:8080/courses/enroll/tocourse/${userId}`,course)
 	}
 
 }

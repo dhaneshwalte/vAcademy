@@ -3,6 +3,6 @@ export class Course {
 		public name:string,
 		public duration:string,
 		public imageUrl: string,
-		public price: number,
+		public price: number
 	) {} 
 }

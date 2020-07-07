@@ -49,6 +49,7 @@ public class AuthenticationController
 	@GetMapping("/users/login/{email}/{password}/{isAdmin}")
 	public Users loginUser(@PathVariable String email, @PathVariable String password,@PathVariable boolean isAdmin)
 	{
+		System.out.println("IN LOGIN");
 		Users user=authenticationService.authenticateUser(email,password,isAdmin);
 		if(user!=null)
 		{

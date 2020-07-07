@@ -11,7 +11,7 @@ import { CoursesService } from 'src/app/services/courses.service';
 export class CourseDetailComponent implements OnInit {
 
   course: Course;
-  index: number;
+  index: number; 
   constructor(private route: ActivatedRoute,
               private coursesService: CoursesService) { }
 

@@ -1,5 +1,6 @@
 package com.vacademy.vacademy.authentication;
-
+import com.vacademy.vacademy.dbModels.Courses;
+import java.util.*;
 public class Users {
 	private Long id;
 	private String firstName;
@@ -8,9 +9,11 @@ public class Users {
 	private String mobileNumber;
 	private String password;
 	private boolean admin;
+	private List<Courses>enrolledCourses;
+	
 	public Users() {}
 	public Users(Long id, String firstName, String lastName, String email, String mobileNumber, String password,
-			boolean isAdmin) {
+			boolean isAdmin,List<Courses>enrolledCourses) {
 		super();
 		this.id = id;
 		this.firstName = firstName;
@@ -19,6 +22,7 @@ public class Users {
 		this.mobileNumber = mobileNumber;
 		this.password = password;
 		this.admin = isAdmin;
+		this.enrolledCourses=enrolledCourses;
 	}
 	public Long getId() {
 		return id;
@@ -61,6 +65,19 @@ public class Users {
 	}
 	public void setAdmin(boolean isAdmin) {
 		this.admin = isAdmin;
+		
+	}
+	public List<Courses> getEnrolledCourses() {
+		return enrolledCourses;
+	}
+	public void setEnrolledCourses(List<Courses> enrolledCourses) {
+		this.enrolledCourses = enrolledCourses;
+	}
+	@Override
+	public String toString() {
+		return "Users [id=" + id + ", firstName=" + firstName + ", lastName=" + lastName + ", email=" + email
+				+ ", mobileNumber=" + mobileNumber + ", password=" + password + ", admin=" + admin
+				+ ", enrolledCourses=" + enrolledCourses + "]";
 	}
 	
 	

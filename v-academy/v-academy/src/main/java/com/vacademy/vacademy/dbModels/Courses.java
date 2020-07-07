@@ -1,5 +1,5 @@
 package com.vacademy.vacademy.dbModels;
-
+import java.util.*;
 public class Courses {
 	
 	private Long id;
@@ -7,6 +7,7 @@ public class Courses {
 	private String duration;
 	private String imageUrl;
 	private Long price;
+	private List<String> lessons;
 	
 	public Courses() {}
 
@@ -16,6 +17,7 @@ public class Courses {
 		this.duration = duration;
 		this.imageUrl = imageUrl;
 		this.price = price;
+		
 	}
 
 	public Long getId() {
@@ -56,6 +58,14 @@ public class Courses {
 
 	public void setPrice(Long price) {
 		this.price = price;
+	}
+
+	public List<String> getLessons() {
+		return lessons;
+	}
+
+	public void setLessons(List<String> lessons) {
+		this.lessons = lessons;
 	}
 	
 	

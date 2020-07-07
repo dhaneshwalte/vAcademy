@@ -1,7 +1,9 @@
 import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Course } from 'src/app/shared/course.model';
 import { CoursesService } from 'src/app/services/courses.service';
+import { User } from 'src/app/auth/user.model';
+import { MycoursesComponent } from '../../mycourses/mycourses.component';
 
 declare var paypal;
 
@@ -13,14 +15,16 @@ declare var paypal;
 export class CoursePayComponent implements OnInit {
   index: number;
   course: Course;
+  user:User;
   @ViewChild('paypal', { static: true }) paypalElement: ElementRef;
   constructor(private route: ActivatedRoute,
-              private coursesService: CoursesService) { }
+              private coursesService: CoursesService,
+              private router:Router) { }
 
   paidFor = false;
   ngOnInit() {
     this.index = this.route.snapshot.params['id'];
-    this.course = this.coursesService.getAvailableCourse(this.index);
+    this.course = this.coursesService.getAvailableCourse(this.index); 
     paypal
       .Buttons({
         createOrder: (data, actions) => {
@@ -42,6 +46,8 @@ export class CoursePayComponent implements OnInit {
           //Create API Call
           const order = await actions.order.capture();
           this.paidFor = true;
+          //console.log("TO BE ADDED: ",this.course)
+          this.addToMyCourses(this.course)
           console.log(order);
         },
         onError: err => {
@@ -50,6 +56,27 @@ export class CoursePayComponent implements OnInit {
         }
       })
       .render(this.paypalElement.nativeElement);
+  }
+
+  addToMyCourses(course)
+  {
+    let userData=JSON.parse(localStorage.getItem('userData'))
+    let userId=userData['id']
+    this.coursesService.EnrolleToTheCourse(userId,course).subscribe(
+      
+        response=>{
+          //console.log("added:",response)
+          this.user=userData
+          this.user.enrolledCourses=response;
+          localStorage.setItem('userData',JSON.stringify(this.user))
+          //console.log(this.user)
+          let mycourse:MycoursesComponent
+          mycourse.refresh()
+        },
+        error=>{}
+      
+    )
+    this.router.navigate(['courses/my'])
   }
 
 }
