@@ -13,9 +13,9 @@ Import The "BackEnd Application" on eclipse as Maven project, and run as "Java A
 This Project is Created by 
 
 <ul>
-	<a href="https://github.com/Dhanesh75"><li>Dhanesh Walte</li></a>
-	<a href="https://github.com/Mohitgupta943"><li>Mohit Gupta</li></a>
-	<a href="https://github.com/rohankurekar"><li>Rohan Kurekar</li></a>
+	<li><a href="https://github.com/Dhanesh75">Dhanesh Walte</a></li>
+	<li><a href="https://github.com/Mohitgupta943">Mohit Gupta</a></li>
+	<li><a href="https://github.com/rohankurekar">Rohan Kurekar</a></li>
 </ul>
 
 ## Further help
