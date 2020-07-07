@@ -1,12 +1,12 @@
 # VAcademy
 
-## Development server (FrontEnd)
+## Development server (Front End)
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
 
-## Development server (BackEnd)
+## Development server (Back End)
 
-Import The "BackEnd Application" on eclipse as Maven project, and run as "Java Application". This will run on `http://localhost:8080/`
+Import The "Back End Application" on eclipse as Maven project, and run as "Java Application". This will run on `http://localhost:8080/`
 
 ## Further Details
 
