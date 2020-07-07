@@ -4,7 +4,7 @@
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
 
-## Development server (FrontEnd)
+## Development server (BackEnd)
 
 Import The "BackEnd Application" on eclipse as Maven project, and run as "Java Application". This will run on `http://localhost:8080/`
 
