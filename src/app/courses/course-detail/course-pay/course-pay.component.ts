@@ -70,13 +70,12 @@ export class CoursePayComponent implements OnInit {
           this.user.enrolledCourses=response;
           localStorage.setItem('userData',JSON.stringify(this.user))
           //console.log(this.user)
-          let mycourse:MycoursesComponent
-          mycourse.refresh()
+          this.router.navigate(['courses/my'])
         },
         error=>{}
       
     )
-    this.router.navigate(['courses/my'])
+    
   }
 
 }
