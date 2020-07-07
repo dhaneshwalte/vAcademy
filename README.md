@@ -29,3 +29,14 @@ Front End environment : FrontEnd/package.json
 	<li>Popper.js</li>
 	<li>Angular Dev-kit</li>
 </ul>
+
+## Screenshots
+
+<img src="Screenshots/landing_page.png">
+<img src="Screenshots/Courses.png">
+<img src="Screenshots/buy_course.png">
+<img src="Screenshots/lessons.png">
+<img src="Screenshots/login.png">
+<img src="Screenshots/paypal.png">
+<img src="Screenshots/profile.png">
+<img src="Screenshots/signup.png">
