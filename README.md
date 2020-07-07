@@ -18,3 +18,13 @@ This Project is Created by
 	<li><a href="https://github.com/rohankurekar">Rohan Kurekar</a></li>
 </ul>
 
+## Environment
+
+Front End environment : FrontEnd/package.json
+
+## Additional Dependencies (Front End)
+<ul>
+	<li>Jquery</li>
+	<li>Bootstrap 4.5</li>
+	<li>Popper.js</li>
+</ul>
